@@ -1,0 +1,113 @@
+swagger: '2.0'
+info:
+  title: API Title
+  version: '1.0'
+host: localhost
+basePath: /api
+schemes:
+  - http
+paths:
+ /read/{id}:
+  get:
+    parameter:
+      in: path
+      name: id
+      type:int
+    required: true
+  responses:
+    '200':
+      description: successs
+      content:
+        application/json:
+          schema:
+            type: object
+              properties:
+                subscription_id:
+                  type: int
+                ServiceName:
+                  type: string
+                Price:
+                  type:int
+                StartDate:
+                  type: DateTime
+ /list:
+  get:
+    responses:
+      '200':
+        description: successs
+      application/json:
+          schema:
+            type: array
+              properties:
+                subscription_id:
+                  type: int
+                ServiceName:
+                  type: string
+                Price:
+                  type:int
+                StartDate:
+                  type: DateTime
+ /create: # new subscription
+  post:
+    parameter:
+      application/json
+        schema:
+          type: object
+            properties: #subscription_id generates by database
+                ServiceName:
+                  type: string
+                Price:
+                  type:int
+                StartDate:
+                  type: DateTime
+    responses:
+      '200':
+        description: successs
+/edit: #update
+  post:
+    parameter:
+      application/json:
+        schema:
+          type: object
+            properties: #subscription_id generates by database
+                ServiceName:
+                  type: string
+                Price:
+                  type:int
+                StartDate:
+                  type: DateTime
+    responses:
+      '200':
+        description: successs
+/delete: #remove a subscription
+  get:
+    parameter:
+      name:id
+      in:path
+      type:int
+    response:
+      '200':
+        description: success 
+/sum:
+  post:
+    parameter:
+      application/json:
+        schema:
+          type:object
+        properties:
+          FromDate
+            type:DateTime
+          ToDate
+            type:DateTime
+          UserId #optional depends of sum type
+            type:uuid #(string)
+            required:false
+          ServiceName #optional depends of sum type
+            type:string
+            required:false
+  
+ 
+
+   
+    
+

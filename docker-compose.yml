@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    image: subscriptions:latest
+    build: 
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      POSTGRESS_PASSWORD: postgress
+      # Use 'db' (the service name) as the hostname
+      DB_URL: postgres://user:password@db:5432/mydatabase?sslmode=disable
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
