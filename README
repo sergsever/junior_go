@@ -1,8 +1,8 @@
 
-# GOLANG junior subscriptions API
+# Go junior subscriptions API
 ## Build:
-  go build .
+  'go build .'
 ## Run:
-  go run .
+  'go run .'
 ## Docker-compose:
   docker-compose up
