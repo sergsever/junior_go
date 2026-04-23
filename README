@@ -1,9 +1,0 @@
-# Go junior Subscriptions API
-
-## Build: ##   
-  _go build ._
-
-## Run: ##
-  _go run ._
-## Docker-compose: ##
-  _docker-compose up_
