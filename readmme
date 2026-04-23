@@ -1,0 +1,8 @@
+
+* GOLANG
+**Build:
+  go build .
+**Run:
+  go run .
+**Docker-compose:
+  docker-compose up
