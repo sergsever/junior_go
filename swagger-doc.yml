@@ -10,9 +10,10 @@ paths:
  /read/{id}:
   get:
     parameter:
+
       in: path
       name: id
-      type:int
+        type:int
     required: true
   responses:
     '200':
@@ -20,7 +21,7 @@ paths:
       content:
         application/json:
           schema:
-            type: object
+              type: body
               properties:
                 subscription_id:
                   type: int
@@ -37,29 +38,30 @@ paths:
         description: successs
       application/json:
           schema:
-            type: array
+              type: body #json array of subscriptions
               properties:
-                subscription_id:
+                name:subscription_id:
                   type: int
-                ServiceName:
+                name:ServiceName:
                   type: string
-                Price:
+                name:Price:
                   type:int
-                StartDate:
+                name:StartDate:
                   type: DateTime
  /create: # new subscription
   post:
     parameter:
-      application/json
+      'application/json':
         schema:
-          type: object
-            properties: #subscription_id generates by database
-                ServiceName:
-                  type: string
-                Price:
-                  type:int
-                StartDate:
-                  type: DateTime
+          type: body #json a subscription
+          properties: 
+                #subscription_id generates by database
+            ServiceName:
+                type: string
+            Price:
+                type:int
+            StartDate:
+                type: DateTime
     responses:
       '200':
         description: successs
@@ -68,14 +70,16 @@ paths:
     parameter:
       application/json:
         schema:
-          type: object
-            properties: #subscription_id generates by database
-                ServiceName:
-                  type: string
-                Price:
+            type: body
+            properties: 
+              name:subscription_id:
                   type:int
-                StartDate:
-                  type: DateTime
+              name:ServiceName:
+                  type: string
+              name:Price:
+                type:int
+              name:StartDate:
+                type: DateTime
     responses:
       '200':
         description: successs
@@ -93,16 +97,16 @@ paths:
     parameter:
       application/json:
         schema:
-          type:object
+          type:body
         properties:
-          FromDate
+          name:FromDate
             type:DateTime
-          ToDate
+          name:ToDate
             type:DateTime
-          UserId #optional depends of sum type
-            type:uuid #(string)
+          name:UserId #optional depends of sum type
+            type:string #(uiid)
             required:false
-          ServiceName #optional depends of sum type
+          name:ServiceName #optional depends of sum type
             type:string
             required:false
   
